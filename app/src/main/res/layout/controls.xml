@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/control_panel"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/egg"
+    android:paddingTop="20dp"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
+    android:paddingBottom="12dp">
+
+    <SeekBar
+        android:id="@+id/seek_radius"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="4000" />
+
+    <TextView
+        android:id="@+id/radius_text"
+        tools:text="Radius: 125"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seek_radius"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="10dp"
+        android:textSize="12sp" />
+
+    <SeekBar
+        android:id="@+id/seek_peek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radius_text"
+        android:max="1000" />
+
+    <TextView
+        android:id="@+id/peek_text"
+        tools:text="Peek: 75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seek_peek"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="10dp"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/gravity_label"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_below="@id/peek_text"
+        android:gravity="center_vertical"
+        android:text="@string/gravity" />
+
+    <Spinner
+        android:id="@+id/gravity"
+        android:layout_width="140dp"
+        android:layout_height="52dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/peek_text"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_alignTop="@+id/orientation"
+        android:gravity="center_vertical"
+        android:text="@string/orientation" />
+
+    <Spinner
+        android:id="@+id/orientation"
+        android:layout_width="140dp"
+        android:layout_height="52dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/gravity"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_alignTop="@+id/rotate"
+        android:gravity="center_vertical"
+        android:text="@string/rotate" />
+
+    <CheckBox
+        android:id="@+id/rotate"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/orientation"
+        android:layout_marginEnd="8dp" />
+</RelativeLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#bf8d41</color>
+    <color name="colorPrimaryDark">#5e3a20</color>
+    <color name="colorAccent">#477064</color>
+
+    <color name="egg">#e1e1e1e1</color>
+</resources>

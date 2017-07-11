@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Turn</string>
+
+    <string name="radius_format">Radius: %1$d</string>
+    <string name="peek_format">Peek: %1$d</string>
+
+    <string name="gravity">Gravity</string>
+    <string name="orientation">Orientation</string>
+    <string name="rotate">Rotate</string>
+    <string name="controls">Controls</string>
+</resources>

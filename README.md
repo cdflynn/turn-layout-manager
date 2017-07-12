@@ -7,7 +7,7 @@ A simple carousel for RecyclerView.
 ## Usage
 
 Just create a new `TurnLayoutManager` using the constructor:
-```
+```java
 TurnLayoutManager(context,              // provide a context
                   Gravity.START,        // from which direction should the list items orbit? 
                   Orientation.VERTICAL, // Is this a vertical or horizontal scroll?
@@ -81,6 +81,22 @@ Orientation.HORIZONTAL
 
 ## Install
 
+Add the JitPack repository to your root build.gradle
+```
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
+Add the dependency to your module's build.gradle
+```
+dependencies {
+	        compile 'com.github.cdflynn:turn-layout-manager:v1.0'
+	}
+```
 
 ## How It Works
 
@@ -99,4 +115,16 @@ Orientation.HORIZONTAL
 
 A full re-implementation of a new `LayoutManager` could potentially solve those drawbacks.  
 
+## License
 
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.

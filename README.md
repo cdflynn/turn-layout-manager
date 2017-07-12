@@ -2,7 +2,9 @@
 
 A simple carousel for RecyclerView.
 
-##Usage
+![Demo](https://github.com/cdflynn/turn-layout-manager/blob/master/app/img/turn_demo.gif?raw=true)
+
+## Usage
 
 Just create a new `TurnLayoutManager` using the constructor:
 ```
@@ -80,17 +82,17 @@ Orientation.HORIZONTAL
 ## Install
 
 
-##How It Works
+## How It Works
 
 `TurnLayoutManager` uses the base functionality of `LinearLayoutManager` with some slight modifications.  Child views are positioned normally as `LinearLayoutManager` does, but they're offset along the rotation radius and peek distance.  This involves some trade offs.
 
-#####Benefits:
+##### Benefits:
 
 - Automatically **supports predictive animations**, including mutations to radius and peek distance.
 - Inherits stable support for different scroll directions and therefore can introduce support for `Gravity`.
 - Does not attempt to re-solve the huge variety of edge cases that `LinearLayoutManager` already solves, and thus avoids re-introducing those exceptions.
 
-#####Drawbacks:
+##### Drawbacks:
 
 - It's less efficient than a from-scratch implementation of `LayoutManager`.  Specifically, `TurnLayoutManager` will have a strictly longer layout pass than `LinearLayoutManager`, and for very heavyweight list rows it may drop a frame that `LinearLayoutManager` otherwise would not.  _No matter what layout manager you use, try to keep your item layouts efficient._  
 - List items are not forced to adjust their position parallel to the scroll direction, only their perpendicular offset.  Items enter and leave the screen a bit faster than they would on a real turning surface, though the effect is subtle.

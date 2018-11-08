@@ -268,8 +268,8 @@ public class TurnLayoutManager extends LinearLayoutManager {
             View child = getChildAt(i);
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int xOffset = (int) resolveOffsetX(radius, child.getY() + child.getHeight() / 2, center, peekDistance);
-            final int x = gravity == Gravity.START ? xOffset + layoutParams.getMarginStart()
-                    : getWidth() - xOffset - child.getWidth() - layoutParams.getMarginStart();
+            final int x = gravity == Gravity.START ? xOffset + getMarginStart(layoutParams)
+                    : getWidth() - xOffset - child.getWidth() - getMarginStart(layoutParams);
             child.layout(x, child.getTop(), child.getWidth() + x, child.getBottom());
             setChildRotationVertical(gravity, child, radius, center);
         }
@@ -305,8 +305,8 @@ public class TurnLayoutManager extends LinearLayoutManager {
             View child = getChildAt(i);
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int yOffset = (int) resolveOffsetY(radius, child.getX() + child.getWidth() / 2, center, peekDistance);
-            final int y = gravity == Gravity.START ? yOffset + layoutParams.getMarginStart()
-                    : getHeight() - yOffset - child.getHeight() - layoutParams.getMarginStart();
+            final int y = gravity == Gravity.START ? yOffset + getMarginStart(layoutParams)
+                    : getHeight() - yOffset - child.getHeight() - getMarginStart(layoutParams);
 
             child.layout(child.getLeft(), y, child.getRight(), child.getHeight() + y);
             setChildRotationHorizontal(gravity, child, radius, center);
@@ -330,5 +330,15 @@ public class TurnLayoutManager extends LinearLayoutManager {
         }
         final float opposite = Math.abs(child.getX() + child.getWidth() / 2 - center.x);
         child.setRotation((float) (directionMult * Math.toDegrees(Math.asin(opposite / radius))));
+    }
+    
+    /**
+     * @see android.view.ViewGroup.MarginLayoutParams#getMarginStart()
+     */
+    private static int getMarginStart(ViewGroup.MarginLayoutParams layoutParams) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            return layoutParams.getMarginStart();
+        }
+        return layoutParams.leftMargin;
     }
 }

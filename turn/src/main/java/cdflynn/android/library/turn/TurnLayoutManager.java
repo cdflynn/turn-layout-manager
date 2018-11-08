@@ -335,7 +335,7 @@ public class TurnLayoutManager extends LinearLayoutManager {
     /**
      * @see android.view.ViewGroup.MarginLayoutParams#getMarginStart()
      */
-    private static int getMarginStart(ViewGroup.MarginLayoutParams layoutParams) {
+    private int getMarginStart(ViewGroup.MarginLayoutParams layoutParams) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             return layoutParams.getMarginStart();
         }

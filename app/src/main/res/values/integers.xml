@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="list_min_scale">10</integer>
+    <integer name="list_max_scale">10</integer>
+    <integer name="list_scale_factor">10</integer>
+    <integer name="list_min_alpha">10</integer>
+    <integer name="list_max_alpha">10</integer>
+    <integer name="list_alpha_factor">10</integer>
+</resources>

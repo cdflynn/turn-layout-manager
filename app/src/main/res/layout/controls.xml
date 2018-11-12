@@ -1,93 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/control_panel"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/egg"
-    android:paddingTop="20dp"
-    android:paddingEnd="16dp"
-    android:paddingStart="16dp"
-    android:paddingBottom="12dp">
+    android:fillViewport="true">
 
-    <SeekBar
-        android:id="@+id/seek_radius"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="4000" />
+        android:paddingTop="20dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:paddingBottom="12dp">
 
-    <TextView
-        android:id="@+id/radius_text"
-        tools:text="Radius: 125"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/seek_radius"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
-        android:layout_marginTop="10dp"
-        android:textSize="12sp" />
+        <SeekBar
+            android:id="@+id/seek_radius"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="4000" />
 
-    <SeekBar
-        android:id="@+id/seek_peek"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/radius_text"
-        android:max="1000" />
+        <TextView
+            android:id="@+id/radius_text"
+            tools:text="Radius: 125"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/seek_radius"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="10dp"
+            android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/peek_text"
-        tools:text="Peek: 75"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/seek_peek"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
-        android:layout_marginTop="10dp"
-        android:textSize="12sp" />
+        <SeekBar
+            android:id="@+id/seek_peek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radius_text"
+            android:max="1000" />
 
-    <TextView
-        android:id="@+id/gravity_label"
-        android:layout_width="wrap_content"
-        android:layout_height="52dp"
-        android:layout_below="@id/peek_text"
-        android:gravity="center_vertical"
-        android:text="@string/gravity" />
+        <TextView
+            android:id="@+id/peek_text"
+            tools:text="Peek: 75"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/seek_peek"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="10dp"
+            android:textSize="12sp" />
 
-    <Spinner
-        android:id="@+id/gravity"
-        android:layout_width="140dp"
-        android:layout_height="52dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/peek_text"
-        android:layout_marginBottom="20dp" />
+        <LinearLayout
+            android:id="@+id/scale_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/peek_text">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="52dp"
-        android:layout_alignTop="@+id/orientation"
-        android:gravity="center_vertical"
-        android:text="@string/orientation" />
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingRight="5dp"
+                android:gravity="center">
 
-    <Spinner
-        android:id="@+id/orientation"
-        android:layout_width="140dp"
-        android:layout_height="52dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/gravity"
-        android:layout_marginBottom="20dp" />
+                <SeekBar
+                    android:id="@+id/min_scale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="20" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="52dp"
-        android:layout_alignTop="@+id/rotate"
-        android:gravity="center_vertical"
-        android:text="@string/rotate" />
+                <TextView
+                    android:id="@+id/min_scale_text"
+                    tools:text="Scale Min: 1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
-    <CheckBox
-        android:id="@+id/rotate"
-        android:layout_width="wrap_content"
-        android:layout_height="52dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/orientation"
-        android:layout_marginEnd="8dp" />
-</RelativeLayout>
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:gravity="center">
+
+                <SeekBar
+                    android:id="@+id/max_scale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="20" />
+
+                <TextView
+                    android:id="@+id/max_scale_text"
+                    tools:text="Scale Max: 1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/alpha_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/scale_container">
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingRight="5dp"
+                android:gravity="center">
+
+                <SeekBar
+                    android:id="@+id/min_alpha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="10" />
+
+                <TextView
+                    android:id="@+id/min_alpha_text"
+                    tools:text="Alpha Min: 1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:gravity="center">
+
+                <SeekBar
+                    android:id="@+id/max_alpha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="10" />
+
+                <TextView
+                    android:id="@+id/max_alpha_text"
+                    tools:text="Alpha Max: 1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/gravity_label"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:layout_below="@id/alpha_container"
+            android:gravity="center_vertical"
+            android:text="@string/gravity" />
+
+        <Spinner
+            android:id="@+id/gravity"
+            android:layout_width="140dp"
+            android:layout_height="52dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/alpha_container"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:layout_alignTop="@+id/orientation"
+            android:gravity="center_vertical"
+            android:text="@string/orientation" />
+
+        <Spinner
+            android:id="@+id/orientation"
+            android:layout_width="140dp"
+            android:layout_height="52dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/gravity"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:layout_alignTop="@+id/rotate"
+            android:gravity="center_vertical"
+            android:text="@string/rotate" />
+
+        <CheckBox
+            android:id="@+id/rotate"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/orientation"
+            android:layout_marginEnd="8dp" />
+    </RelativeLayout>
+</ScrollView>

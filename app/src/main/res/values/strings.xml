@@ -3,6 +3,10 @@
 
     <string name="radius_format">Radius: %1$d</string>
     <string name="peek_format">Peek: %1$d</string>
+    <string name="max_scale_format">Scale Max: %1$.1f</string>
+    <string name="min_scale_format">Scale Min: %1$.1f</string>
+    <string name="max_alpha_format">Alpha Max: %1$.1f</string>
+    <string name="min_alpha_format">Alpha Min: %1$.1f</string>
 
     <string name="gravity">Gravity</string>
     <string name="orientation">Orientation</string>

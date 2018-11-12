@@ -6,14 +6,19 @@ A simple carousel for RecyclerView.
 
 ## Usage
 
-Just create a new `TurnLayoutManager` using the constructor:
+Just create a new `TurnLayoutManager` using the Builder:
 ```java
-TurnLayoutManager(context,              // provide a context
-                  Gravity.START,        // from which direction should the list items orbit? 
-                  Orientation.VERTICAL, // Is this a vertical or horizontal scroll?
-                  radius,               // The radius of the item rotation
-                  peek,                 // Extra offset distance
-                  shouldRotate);        // should list items angle towards the center? true/false.
+new TurnLayoutManager.Builder(context)        // provide a context
+                .setGravity(Gravity.START)            // from which direction should the list items orbit?
+                .setOrientation(Orientation.VERTICAL) // Is this a vertical or horizontal scroll?
+                .setRadius(radius)                    // The radius of the item rotation
+                .setPeek(peek)                        // Extra offset distance
+                .setShouldRotate(shouldRotate)        // should list items angle towards the center? true/false.
+                .setMinAlpha(minAlpha)                // The minimum alpha from [0 .. 1]
+                .setMaxAlpha(maxAlpha)                // The maximum alpha from [0 .. 1]
+                .setMinScale(minScale)                // The minimum scale from [0 to Float.MAX_VALUE]
+                .setMaxScale(maxScale)                // The maximum scale from [0 .. Float.MAX_VALUE]
+                .build();                             // This builds the layout manager
 ```
 
 Just like a `LinearLayoutManager`, a `TurnLayoutManager` specifies an orientation, either `VERTICAL` or `HORIZONTAL` for vertical and horizontal scrolling respectively.  

@@ -2,11 +2,13 @@ package cdflynn.android.library.turn;
 
 import android.content.Context;
 import android.graphics.Point;
+import android.os.Build;
 import android.support.annotation.Dimension;
 import android.support.annotation.IntDef;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 
 /**
  * An extension of {@link LinearLayoutManager}, where each list item can be offset along a circular

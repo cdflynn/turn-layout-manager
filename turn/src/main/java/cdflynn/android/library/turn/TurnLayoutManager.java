@@ -3,10 +3,10 @@ package cdflynn.android.library.turn;
 import android.content.Context;
 import android.graphics.Point;
 import android.os.Build;
-import android.support.annotation.Dimension;
-import android.support.annotation.IntDef;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Dimension;
+import androidx.annotation.IntDef;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -33,15 +33,15 @@ public class TurnLayoutManager extends LinearLayoutManager {
     }
 
     /**
-     * Orientation as defined in {@link LinearLayoutManager}
+     * Orientation as defined in {@link RecyclerView}
      */
     @IntDef(value = {
             Orientation.VERTICAL,
             Orientation.HORIZONTAL
     })
     public @interface Orientation {
-        int VERTICAL = LinearLayoutManager.VERTICAL;
-        int HORIZONTAL = LinearLayoutManager.HORIZONTAL;
+        int VERTICAL = RecyclerView.VERTICAL;
+        int HORIZONTAL = RecyclerView.HORIZONTAL;
     }
 
     @Gravity
@@ -117,7 +117,7 @@ public class TurnLayoutManager extends LinearLayoutManager {
      *
      * @param gravity      The {@link Gravity} that will define where the anchor point is for this layout manager.  The
      *                     gravity point is the point around which items orbit.
-     * @param orientation  The orientation as defined in {@link LinearLayoutManager}, and enforced by {@link Orientation}
+     * @param orientation  The orientation as defined in {@link RecyclerView}, and enforced by {@link Orientation}
      * @param radius       The radius of the rotation angle, which helps define the curvature of the turn.  This value
      *                     will be clamped to {@code [0, MAX_INT]} inclusive.
      * @param peekDistance The absolute extra distance from the {@link Gravity} edge after which this layout manager will start
@@ -231,7 +231,7 @@ public class TurnLayoutManager extends LinearLayoutManager {
 
     /**
      * Find the absolute vertical distance by which a view at {@code viewX} should offset to
-     * align with the circle {@code center} with {@ode radius}, account for {@code peekDistance}.
+     * align with the circle {@code center} with {@code radius}, account for {@code peekDistance}.
      */
     private double resolveOffsetY(double radius, double viewX, Point center, int peekDistance) {
         final double adjacent = Math.abs(center.x - viewX);
@@ -269,7 +269,7 @@ public class TurnLayoutManager extends LinearLayoutManager {
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) child.getLayoutParams();
-            final int xOffset = (int) resolveOffsetX(radius, child.getY() + child.getHeight() / 2, center, peekDistance);
+            final int xOffset = (int) resolveOffsetX(radius, child.getY() + child.getHeight() / 2.0f, center, peekDistance);
             final int x = gravity == Gravity.START ? xOffset + getMarginStart(layoutParams)
                     : getWidth() - xOffset - child.getWidth() - getMarginStart(layoutParams);
             child.layout(x, child.getTop(), child.getWidth() + x, child.getBottom());
@@ -292,7 +292,7 @@ public class TurnLayoutManager extends LinearLayoutManager {
         } else {
             directionMult = childPastCenter ? 1 : -1;
         }
-        final float opposite = Math.abs(child.getY() + child.getHeight() / 2 - center.y);
+        final float opposite = Math.abs(child.getY() + child.getHeight() / 2.0f - center.y);
         child.setRotation((float) (directionMult * Math.toDegrees(Math.asin(opposite / radius))));
     }
 
@@ -306,7 +306,7 @@ public class TurnLayoutManager extends LinearLayoutManager {
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) child.getLayoutParams();
-            final int yOffset = (int) resolveOffsetY(radius, child.getX() + child.getWidth() / 2, center, peekDistance);
+            final int yOffset = (int) resolveOffsetY(radius, child.getX() + child.getWidth() / 2.0f, center, peekDistance);
             final int y = gravity == Gravity.START ? yOffset + getMarginStart(layoutParams)
                     : getHeight() - yOffset - child.getHeight() - getMarginStart(layoutParams);
 
@@ -330,7 +330,7 @@ public class TurnLayoutManager extends LinearLayoutManager {
         } else {
             directionMult = childPastCenter ? -1 : 1;
         }
-        final float opposite = Math.abs(child.getX() + child.getWidth() / 2 - center.x);
+        final float opposite = Math.abs(child.getX() + child.getWidth() / 2.0f - center.x);
         child.setRotation((float) (directionMult * Math.toDegrees(Math.asin(opposite / radius))));
     }
     

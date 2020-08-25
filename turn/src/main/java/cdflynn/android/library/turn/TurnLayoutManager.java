@@ -142,6 +142,7 @@ public class TurnLayoutManager extends LinearLayoutManager {
     /**
      * Create a {@link TurnLayoutManager} with default settings for gravity, orientation, and rotation.
      */
+    @SuppressWarnings("unused")
     public TurnLayoutManager(Context context,
                              @Dimension int radius,
                              @Dimension int peekDistance) {
@@ -182,6 +183,7 @@ public class TurnLayoutManager extends LinearLayoutManager {
         return by;
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
         super.onLayoutChildren(recycler, state);
@@ -194,6 +196,7 @@ public class TurnLayoutManager extends LinearLayoutManager {
      * around which this layout manager should arrange list items.  Place the resulting coordinates
      * into {@code out}, to avoid reallocation.
      */
+    @SuppressWarnings("DuplicateExpressions")
     private Point deriveCenter(@Gravity int gravity,
                                int orientation,
                                @Dimension int radius,
@@ -268,6 +271,7 @@ public class TurnLayoutManager extends LinearLayoutManager {
                                          int peekDistance) {
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
+            if (child == null) continue;
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int xOffset = (int) resolveOffsetX(radius, child.getY() + child.getHeight() / 2.0f, center, peekDistance);
             final int x = gravity == Gravity.START ? xOffset + getMarginStart(layoutParams)
@@ -285,7 +289,7 @@ public class TurnLayoutManager extends LinearLayoutManager {
             child.setRotation(0);
             return;
         }
-        boolean childPastCenter = (child.getY() + child.getHeight() / 2) > center.y;
+        boolean childPastCenter = (child.getY() + child.getHeight() / 2.0) > center.y;
         float directionMult;
         if (gravity == Gravity.END) {
             directionMult = childPastCenter ? -1 : 1;
@@ -305,6 +309,7 @@ public class TurnLayoutManager extends LinearLayoutManager {
                                            int peekDistance) {
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
+            if (child == null) continue;
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int yOffset = (int) resolveOffsetY(radius, child.getX() + child.getWidth() / 2.0f, center, peekDistance);
             final int y = gravity == Gravity.START ? yOffset + getMarginStart(layoutParams)
@@ -323,7 +328,7 @@ public class TurnLayoutManager extends LinearLayoutManager {
             child.setRotation(0);
             return;
         }
-        boolean childPastCenter = (child.getX() + child.getWidth() / 2) > center.x;
+        boolean childPastCenter = (child.getX() + child.getWidth() / 2.0) > center.x;
         float directionMult;
         if (gravity == Gravity.END) {
             directionMult = childPastCenter ? 1 : -1;

@@ -34,15 +34,15 @@ public class MainActivity extends AppCompatActivity {
         View controls;
 
         Views(MainActivity activity) {
-            root = (ViewGroup) activity.findViewById(R.id.root);
-            list = (RecyclerView) activity.findViewById(R.id.recycler_view);
-            radius = (SeekBar) activity.findViewById(R.id.seek_radius);
-            radiusText = (TextView) activity.findViewById(R.id.radius_text);
-            peek = (SeekBar) activity.findViewById(R.id.seek_peek);
-            peekText = (TextView) activity.findViewById(R.id.peek_text);
-            gravity = (Spinner) activity.findViewById(R.id.gravity);
-            orientation = (Spinner) activity.findViewById(R.id.orientation);
-            rotate = (CheckBox) activity.findViewById(R.id.rotate);
+            root = activity.findViewById(R.id.root);
+            list = activity.findViewById(R.id.recycler_view);
+            radius = activity.findViewById(R.id.seek_radius);
+            radiusText = activity.findViewById(R.id.radius_text);
+            peek = activity.findViewById(R.id.seek_peek);
+            peekText = activity.findViewById(R.id.peek_text);
+            gravity = activity.findViewById(R.id.gravity);
+            orientation = activity.findViewById(R.id.orientation);
+            rotate = activity.findViewById(R.id.rotate);
             controlsHandle = activity.findViewById(R.id.control_handle);
             controls = activity.findViewById(R.id.control_panel);
         }
@@ -50,14 +50,13 @@ public class MainActivity extends AppCompatActivity {
 
     private Views views;
     private TurnLayoutManager layoutManager;
-    private SampleAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         views = new Views(this);
-        adapter = new SampleAdapter(this);
+        SampleAdapter adapter = new SampleAdapter(this);
         final int radius = (int) getResources().getDimension(R.dimen.list_radius);
         final int peek = (int) getResources().getDimension(R.dimen.list_peek);
         layoutManager = new TurnLayoutManager(this,
@@ -177,13 +176,13 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private class OrientationAdapter extends ArrayAdapter<String> {
+    private static class OrientationAdapter extends ArrayAdapter<String> {
         public OrientationAdapter(@NonNull Context context, @LayoutRes int resource) {
             super(context, resource, new String[]{"Vertical", "Horizontal"});
         }
     }
 
-    private class GravityAdapter extends ArrayAdapter<String> {
+    private static class GravityAdapter extends ArrayAdapter<String> {
         public GravityAdapter(@NonNull Context context, @LayoutRes int resource) {
             super(context, resource, new String[]{"Start", "End"});
         }

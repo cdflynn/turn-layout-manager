@@ -94,7 +94,7 @@ Add the JitPack repository to your root build.gradle
 Add the dependency to your module's build.gradle
 ```
 dependencies {
-	        implementation 'com.github.cdflynn:turn-layout-manager:v1.3'
+	        implementation 'com.github.cdflynn:turn-layout-manager:v1.3.1'
 	}
 ```
 

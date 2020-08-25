@@ -1,6 +1,9 @@
 package cdflynn.android.sample.turn;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +18,14 @@ public class SampleAdapter extends RecyclerView.Adapter<SampleAdapter.SampleView
         this.layoutInflater = LayoutInflater.from(context);
     }
 
+    @NonNull
     @Override
-    public SampleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         TextView sampleView = (TextView) layoutInflater.inflate(R.layout.view_sample, parent, false);
         return new SampleViewHolder(sampleView);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(SampleViewHolder holder, int position) {
         holder.tv.setText(Integer.toString(position));
@@ -31,7 +36,7 @@ public class SampleAdapter extends RecyclerView.Adapter<SampleAdapter.SampleView
         return 31;
     }
 
-    class SampleViewHolder extends RecyclerView.ViewHolder {
+    static class SampleViewHolder extends RecyclerView.ViewHolder {
 
         TextView tv;
 

@@ -83,11 +83,11 @@ Orientation.HORIZONTAL
 
 Add the JitPack repository to your root build.gradle
 ```
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
 	}
 ```
 

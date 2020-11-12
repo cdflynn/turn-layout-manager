@@ -94,8 +94,8 @@ allprojects {
 Add the dependency to your module's build.gradle
 ```
 dependencies {
-	        implementation 'com.github.cdflynn:turn-layout-manager:v1.3.1'
-	}
+    implementation 'com.github.cdflynn:turn-layout-manager:v1.3.1'
+}
 ```
 
 ## How It Works

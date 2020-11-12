@@ -88,7 +88,7 @@ allprojects {
         ...
         maven { url 'https://jitpack.io' }
     }
-	}
+}
 ```
 
 Add the dependency to your module's build.gradle

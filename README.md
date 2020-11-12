@@ -83,19 +83,19 @@ Orientation.HORIZONTAL
 
 Add the JitPack repository to your root build.gradle
 ```
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 
 Add the dependency to your module's build.gradle
 ```
 dependencies {
-	        implementation 'com.github.cdflynn:turn-layout-manager:v1.3.1'
-	}
+    implementation 'com.github.cdflynn:turn-layout-manager:v1.3.1'
+}
 ```
 
 ## How It Works
